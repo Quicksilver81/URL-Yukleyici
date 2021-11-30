@@ -1,12 +1,7 @@
 import os
 
-from os import getenv, environ
-from dotenv import load_dotenv
+I class Config(object):
 
-load_dotenv('config.env')
-
-
-class Config(object):
     # get a token from @BotFather
     TG_BOT_TOKEN = os.environ.get("TG_BOT_TOKEN", "")
     
@@ -23,7 +18,7 @@ class Config(object):
     
     # Log Channel ID
     LOG_CHANNEL = int(os.environ.get("LOG_CHANNEL", ""))
-    
+   
     # Telegram maximum file upload size
     MAX_FILE_SIZE = 50000000
     TG_MAX_FILE_SIZE = 2097152000
