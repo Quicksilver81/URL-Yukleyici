@@ -11,14 +11,14 @@ URL | dosyaismi.mp4"""
     UPLOAD_START = "Yükleniyor.."
     START_BUTTONS = InlineKeyboardMarkup(
         [[
-        InlineKeyboardButton('Destek', url='https://t.me/botsohbet'),
-        InlineKeyboardButton('Kanal', url='https://t.me/torrentler')
+        InlineKeyboardButton('Destek', url='https://t.me/mmagneto'),
+        InlineKeyboardButton('Kanal', url='https://t.me/quickwaste')
         ],[
         InlineKeyboardButton('Yardım Menüsü', callback_data='help')
         ]]
     )
     RCHD_TG_API_LIMIT = "{} saniye içinde İndirildi.\nAlgılanan Dosya Boyutu: {}\nÜzgünüm. Ancak, TELEGRAM API sınırlamaları nedeniyle 2GB'DEN büyük dosyaları yükleyemiyorum."
-    AFTER_SUCCESSFUL_UPLOAD_MSG_WITH_TS = "{} saniye içinde İndirildi.\n{} saniye içinde yüklendi.\n\n@tiranozorbot"
+    AFTER_SUCCESSFUL_UPLOAD_MSG_WITH_TS = "{} saniye içinde İndirildi.\n{} saniye içinde yüklendi.\n\n@mmagneto"
     SAVED_CUSTOM_THUMB_NAIL = "✔️ Video için kapak fotoğrafı kaydedildi. Bu görüntü video/dosya için kullanılacaktır."
     DEL_ETED_CUSTOM_THUMB_NAIL = "✔️ Kapak fotoğrafı başarıyla temizlendi."
     CUSTOM_CAPTION_UL_FILE = "{}"
