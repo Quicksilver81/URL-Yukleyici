@@ -1,5 +1,11 @@
 import os
 
+from os import getenv, environ
+from dotenv import load_dotenv
+
+load_dotenv('config.env')
+
+
 class Config(object):
     # get a token from @BotFather
     TG_BOT_TOKEN = os.environ.get("TG_BOT_TOKEN", "")
