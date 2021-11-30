@@ -8,7 +8,7 @@ from pyrogram import Client, filters
 from pyrogram.types.bots_and_keyboards import InlineKeyboardButton, InlineKeyboardMarkup
 from pyrogram.errors import UserNotParticipant
 
-@Client.on_message(filters.private & filters.command(["start"]))
+@Client.on_message(filters.command(["start"]))
 async def start(bot, update):
     update_channel = Config.UPDATE_CHANNEL
     if update_channel:
@@ -30,7 +30,7 @@ async def start(bot, update):
             )
             return
         except Exception:
-            await update.reply_text("Ters giden bir şey mi var. @thebans ile iletişime geçin")
+            await update.reply_text("Ters giden bir şey mi var. @mmagneto ile iletişime geçin")
             return
         await update.reply_text(
             text=Translation.START_TEXT.format(update.from_user.mention),
