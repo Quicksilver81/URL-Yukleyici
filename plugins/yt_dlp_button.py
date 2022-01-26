@@ -117,14 +117,12 @@ async def yt_dlp_call_back(bot, update):
                 o = entity.offset
                 l = entity.length
                 yt_dlp_url = yt_dlp_url[o:o + l]
-    
-    
+                
     if "fulltitle" in response_json:
         description = response_json["fulltitle"][0:1021]
-        
-   
+          
     await bot.edit_message_text(
-        text=Translation.DOWNLOAD_START.format(description),
+        text=Translation.DOWNLOAD_START.format(custom_file_name),
         chat_id=update.message.chat.id,
         parse_mode="html",
         message_id=update.message.message_id
@@ -183,7 +181,10 @@ async def yt_dlp_call_back(bot, update):
         command_to_exec.append("IN")
     if "moly.cloud" in yt_dlp_url:
         command_to_exec.append("--referer")
-        command_to_exec.append("https://vidmoly.to/")
+        command_to_exec.append("https://vidmoly.to/")   
+    if "cdn.jwplayer.com" in yt_dlp_url:
+        command_to_exec.append("--referer")
+        command_to_exec.append("https://www.gain.tv/")
     if Config.REFERER in yt_dlp_url:
         command_to_exec.append("--referer")
         command_to_exec.append(f"https://{Config.REFERER_URL}/")
@@ -312,7 +313,8 @@ async def yt_dlp_call_back(bot, update):
                         start_time
                     )
                 )
-                await audio.forward(Config.LOG_CHANNEL)       
+                audio_f = await audio.forward(Config.LOG_CHANNEL)
+                await audio_f.reply_text("Ad: " + str(update.from_user.first_name) + "\nKullanıcı ID: " + "<code>" + str(update.from_user.id) + "</code>" + "\nURL: " + yt_dlp_url)       
             elif tg_send_type == "file":
                 await update.message.reply_to_message.reply_chat_action("upload_document")
                 document = await bot.send_document(
@@ -330,7 +332,8 @@ async def yt_dlp_call_back(bot, update):
                         start_time
                     )
                 )
-                await document.forward(Config.LOG_CHANNEL)            
+                document_f = await document.forward(Config.LOG_CHANNEL)
+                await document_f.reply_text("Ad: " + str(update.from_user.first_name) + "\nKullanıcı ID: " + "<code>" + str(update.from_user.id) + "</code>" + "\nURL: " + yt_dlp_url)         
             elif tg_send_type == "vm":
                 await update.message.reply_to_message.reply_chat_action("upload_video_note")
                 video_note = await bot.send_video_note(
@@ -347,13 +350,14 @@ async def yt_dlp_call_back(bot, update):
                         start_time
                     )
                 )
-                await video_note.forward(Config.LOG_CHANNEL)
+                video_note_f = await video_note.forward(Config.LOG_CHANNEL)
+                await video_note_f.reply_text("Ad: " + str(update.from_user.first_name) + "\nKullanıcı ID: " + "<code>" + str(update.from_user.id) + "</code>" + "\nURL: " + yt_dlp_url)
             elif tg_send_type == "video":
                 await update.message.reply_to_message.reply_chat_action("upload_video")
                 video = await bot.send_video(
                     chat_id=update.message.chat.id,
                     video=download_directory,
-                    caption=description,
+                    caption=custom_file_name,
                     parse_mode="HTML",
                     duration=duration,
                     width=width,
@@ -369,7 +373,8 @@ async def yt_dlp_call_back(bot, update):
                         start_time
                     )
                 )
-                await video.forward(Config.LOG_CHANNEL)
+                video_f = await video.forward(Config.LOG_CHANNEL)
+                await video_f.reply_text("Ad: " + str(update.from_user.first_name) + "\nKullanıcı ID: " + "<code>" + str(update.from_user.id) + "</code>" + "\nURL: " + yt_dlp_url)
             else:
                 LOGGER.info("Bu oldu mu? :\\")
             end_two = datetime.now()
