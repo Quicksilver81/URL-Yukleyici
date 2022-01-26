@@ -35,7 +35,7 @@ async def echo(bot, update):
     if update_channel:
         try:
             user = await bot.get_chat_member(update_channel, update.chat.id)
-            if user.status == "kicked":
+            if user.status == "banned":
                await bot.delete_messages(
                  chat_id=update.chat.id,
                  message_ids=update.message_id,
