@@ -8,7 +8,7 @@ from pyrogram import Client, filters
 from pyrogram.types.bots_and_keyboards import InlineKeyboardButton, InlineKeyboardMarkup
 from pyrogram.errors import UserNotParticipant
 
-@Client.on_message(filters.private & filters.command(["start"]))
+@Client.on_message(filters.private & filters.command(["start", "help"]))
 async def start(bot, update):
     update_channel = Config.UPDATE_CHANNEL
     if update_channel:
