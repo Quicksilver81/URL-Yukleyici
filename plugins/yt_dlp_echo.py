@@ -216,6 +216,9 @@ async def echo(bot, update):
     if "closeload" in url:
         command_to_exec.append("--referer")
         command_to_exec.append("https://closeload.com/")
+    if "cdn.jwplayer.com" in url:
+        command_to_exec.append("--referer")
+        command_to_exec.append("https://www.gain.tv/")
     if "mail.ru" in url:
         command_to_exec.append("--referer")
         command_to_exec.append("https://my.mail.ru/")
